@@ -1,81 +1,40 @@
-
 import React, { Component } from 'react';
-import { Layout, Menu, Breadcrumb } from 'antd';
-import Icon from '@ant-design/icons';
-import 'antd/dist/antd.css';  // or 'antd/dist/antd.less'
+import { Layout, Menu } from 'antd';
+import 'antd/dist/antd.css';
 import './App.css';
+import Routes from './components/routes'
+import {Sidebar} from './layouts/sidebar'
+import {Network} from './components/graph'
 
-const { SubMenu } = Menu;
-const { Header, Content, Sider, Footer } = Layout;
-
+const { Header, Content, Footer } = Layout;
 
 class App extends Component {
-  state = {
-    collapsed: false,
-  };
-
-  onCollapse = (collapsed) => {
-    console.log(collapsed);
-    this.setState({ collapsed });
-  }
-
-  render() {
-    return (
-      <Layout style={{ minHeight: '100vh' }}>
-        <Sider
-          collapsible
-          collapsed={this.state.collapsed}
-          onCollapse={this.onCollapse}
-        >
-          <div className="App-logo" />
-          <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-            <Menu.Item key="1">
-              <Icon type="pie-chart" />
-              <span>Option 1</span>
-            </Menu.Item>
-            <Menu.Item key="2">
-              <Icon type="desktop" />
-              <span>Option 2</span>
-            </Menu.Item>
-            <SubMenu
-              key="sub1"
-              title={<span><Icon type="user" /><span>User</span></span>}
-            >
-              <Menu.Item key="3">Tom</Menu.Item>
-              <Menu.Item key="4">Bill</Menu.Item>
-              <Menu.Item key="5">Alex</Menu.Item>
-            </SubMenu>
-            <SubMenu
-              key="sub2"
-              title={<span><Icon type="team" /><span>Team</span></span>}
-            >
-              <Menu.Item key="6">Team 1</Menu.Item>
-              <Menu.Item key="8">Team 2</Menu.Item>
-            </SubMenu>
-            <Menu.Item key="9">
-              <Icon type="file" />
-              <span>File</span>
-            </Menu.Item>
-          </Menu>
-        </Sider>
-        <Layout>
-          <Header style={{ background: '#fff', padding: 0 }} />
-          <Content style={{ margin: '0 16px' }}>
-            <Breadcrumb style={{ margin: '16px 0' }}>
-              <Breadcrumb.Item>User</Breadcrumb.Item>
-              <Breadcrumb.Item>Bill</Breadcrumb.Item>
-            </Breadcrumb>
-            <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>
-              Bill is a cat.
-            </div>
-          </Content>
-          <Footer style={{ textAlign: 'center' }}>
-            Ant Design ©2018 Created by Ant UED
-          </Footer>
-        </Layout>
-      </Layout>
-    );
-  }
+    render() {
+        return (
+            <Layout style={{ height: "100vh" }}>
+                <Header className="header">
+                    <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
+                        <Menu.Item key="1">option1</Menu.Item>
+                        <Menu.Item key="2">option2</Menu.Item>
+                        <Menu.Item key="4">option3</Menu.Item>
+                    </Menu>
+                </Header>
+                <Layout>
+                    <Sidebar/>
+                    <Content style={{ padding: '0 30px' }}>
+                        <Routes/>
+                        <Layout className="site-layout-background" style={{ padding: '24px 0', height: "100%"}}>
+                            <Content style={{ padding: '3 12px', height: 500, width: '100%'}}>
+                                Content
+                                <Network/>
+                            </Content>
+                        </Layout>
+                    </Content>
+                    <Footer style={{ textAlign: 'center', position: 'fixed', bottom: '0', width: '100%' }}>Pasture ©2021 Created by Shephexd</Footer>
+                </Layout>
+            </Layout>
+        );
+    }
 }
 
 export default App;
