@@ -1,9 +1,10 @@
-
 import React, { Component } from 'react';
-import { Layout, Menu, Breadcrumb } from 'antd';
-import Icon from '@ant-design/icons';
-import 'antd/dist/antd.css';  // or 'antd/dist/antd.less'
+import { Layout, Menu } from 'antd';
+import 'antd/dist/antd.css';
 import './App.css';
+import Routes from './components/routes'
+import {Sidebar} from './layouts/sidebar'
+import {Network} from './components/graph'
 
 import Routes from './components/routes'
 import {Sidebar} from './layouts/sidebar'

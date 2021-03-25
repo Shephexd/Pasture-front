@@ -1,11 +1,7 @@
 import React from 'react';
-import {
-    BrowserRouter as Router,
-    Route, Switch, Link,
-    useRouteMatch, useParams
-} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {Breadcrumb} from "antd";
-import { Network } from "../graph"
+
 
 class Routes extends React.Component {
     render() {
