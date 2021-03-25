@@ -6,30 +6,31 @@ import Routes from './components/routes'
 import {Sidebar} from './layouts/sidebar'
 import {Network} from './components/graph'
 
-const { Header, Content, Footer } = Layout;
+import Routes from './components/routes'
+import {Sidebar} from './layouts/sidebar'
+import {Route, Switch} from "react-router-dom";
+import { StockNetwork } from "./modules/network";
+import { Portfolio } from "./modules/portfolio";
+
+const { Content, Footer } = Layout;
 
 class App extends Component {
     render() {
         return (
             <Layout style={{ height: "100vh" }}>
-                <Header className="header">
-                    <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
-                        <Menu.Item key="1">option1</Menu.Item>
-                        <Menu.Item key="2">option2</Menu.Item>
-                        <Menu.Item key="4">option3</Menu.Item>
-                    </Menu>
-                </Header>
                 <Layout>
                     <Sidebar/>
-                    <Content style={{ padding: '0 30px' }}>
+                    <Layout>
                         <Routes/>
-                        <Layout className="site-layout-background" style={{ padding: '24px 0', height: "100%"}}>
-                            <Content style={{ padding: '3 12px', height: 500, width: '100%'}}>
-                                Content
-                                <Network/>
-                            </Content>
-                        </Layout>
-                    </Content>
+                        <Content style={{height: '24vh', width: '80%'}}>
+                            <Switch>
+                                <Route path="/about"><About /></Route>
+                                <Route path="/users"><Users /></Route>
+                                <Route path="/portfolio"><Portfolio /></Route>
+                                <Route path="/network"><StockNetwork/></Route>
+                            </Switch>
+                        </Content>
+                    </Layout>
                     <Footer style={{ textAlign: 'center', position: 'fixed', bottom: '0', width: '100%' }}>Pasture ©2021 Created by Shephexd</Footer>
                 </Layout>
             </Layout>
@@ -38,3 +39,15 @@ class App extends Component {
 }
 
 export default App;
+
+function Home() {
+    return (<div>Home</div>)
+}
+
+function About() {
+    return (<div>About</div>)
+}
+
+function Users() {
+    return (<div>Users</div>)
+}
