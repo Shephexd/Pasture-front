@@ -2,15 +2,13 @@ import React, { Component } from 'react';
 import { Layout, Menu } from 'antd';
 import 'antd/dist/antd.css';
 import './App.css';
-import Routes from './components/routes'
-import {Sidebar} from './layouts/sidebar'
-import {Network} from './components/graph'
 
 import Routes from './components/routes'
 import {Sidebar} from './layouts/sidebar'
 import {Route, Switch} from "react-router-dom";
-import { StockNetwork } from "./modules/network";
-import { Portfolio } from "./modules/portfolio";
+import { StockPage } from './pages/stocks'
+import { StockNetwork } from "./pages/network";
+import { Portfolio } from "./pages/portfolio";
 
 const { Content, Footer } = Layout;
 
@@ -22,11 +20,12 @@ class App extends Component {
                     <Sidebar/>
                     <Layout>
                         <Routes/>
-                        <Content style={{height: '24vh', width: '80%'}}>
+                        <Content style={{height: '24vh', width: '80%', padding: '2vw'}}>
                             <Switch>
                                 <Route path="/about"><About /></Route>
                                 <Route path="/users"><Users /></Route>
                                 <Route path="/portfolio"><Portfolio /></Route>
+                                <Route path="/stocks"><StockPage/></Route>
                                 <Route path="/network"><StockNetwork/></Route>
                             </Switch>
                         </Content>
