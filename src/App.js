@@ -18,9 +18,9 @@ class App extends Component {
             <Layout style={{ height: "100vh" }}>
                 <Layout>
                     <Sidebar/>
-                    <Layout>
+                    <Layout style={{padding: '0 1.5vw'}}>
                         <Routes/>
-                        <Content style={{height: '24vh', width: '80%', padding: '2vw'}}>
+                        <Content style={{height: '24vh', width: '80%'}}>
                             <Switch>
                                 <Route path="/about"><About /></Route>
                                 <Route path="/users"><Users /></Route>
